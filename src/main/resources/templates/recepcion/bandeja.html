@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Recibir bolsines</title>
+</head>
+<body>
+<!-- Pantalla minima de la T0 para probar la conexion. La reemplaza Aznar en la T7 (UX V3). -->
+<h1>Recibir bolsines</h1>
+<p>Hola <span th:text="${inicio.nombreEmpleado}">Nombre</span> ·
+    <span th:text="${inicio.cmUsuario}">CM</span></p>
+<table border="1" cellpadding="6">
+    <thead>
+    <tr><th>Precinto</th><th>Bolsin</th><th>CM origen</th><th>Remitos</th><th>Docs</th><th></th></tr>
+    </thead>
+    <tbody>
+    <tr th:each="b : ${inicio.bolsines}">
+        <td th:text="${b.numeroPrecinto}">004512</td>
+        <td th:text="${b.numeroBolsin}">1287</td>
+        <td th:text="${b.cmOrigen}">CM Mendoza</td>
+        <td th:text="${b.cantidadRemitos}">3</td>
+        <td th:text="${b.cantidadDocumentos}">6</td>
+        <td><a th:href="@{/recepcion/{id}(id=${b.id})}">Recibir</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

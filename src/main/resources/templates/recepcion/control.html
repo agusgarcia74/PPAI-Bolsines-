@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Controlar contenido</title>
+</head>
+<body>
+<!-- Pantalla minima de la T0 para probar la conexion. La reemplaza Aznar en la T8 (UX V3). -->
+<h1>Bolsin <span th:text="${detalle.bolsin.numeroBolsin}">1287</span> ·
+    precinto <span th:text="${detalle.bolsin.numeroPrecinto}">004512</span></h1>
+<p>Desde <span th:text="${detalle.bolsin.cmOrigen}">CM</span> hacia <span th:text="${detalle.cmDestino}">CMC</span></p>
+<div th:each="r : ${detalle.remitos}">
+    <h2>Remito <span th:text="${r.numero}">213</span></h2>
+    <ul>
+        <li th:each="d : ${r.documentacion}">
+            <strong th:text="${d.tipo}">Expediente</strong> · <span th:text="${d.asunto}">Asunto</span>
+        </li>
+    </ul>
+</div>
+<p><a th:href="@{/recepcion}">Volver a los bolsines</a></p>
+</body>
+</html>
